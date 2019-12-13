@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Verification">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select the traffic lights"
+        android:textSize="20dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="40dp"
+        />
+
+    <GridLayout
+        android:id="@+id/pictures"
+        android:layout_width="343dp"
+        android:layout_height="458dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:columnCount="3"
+        android:rowCount="3"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="110dp">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/img1"/>
+
+
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkbox"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:text="I'm not a robot"
+        android:textSize="20dp"/>
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/refresh_image"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:id="@+id/verify"
+        android:background="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"/>
+
+</LinearLayout>
