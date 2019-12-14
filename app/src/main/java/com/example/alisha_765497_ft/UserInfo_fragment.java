@@ -28,73 +28,87 @@ interface Listener{
 
     public class UserInfo_fragment extends Fragment {
 
-//    public Context context;
+//        public Context context;
 
         public UserInfo_fragment() {
-        // Required empty public constructor
-    }
-
-    private Listener listener;
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.listener = (Listener) context;
-    }
-
-    @Override
-    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
-        View view = inflater.inflate(R.layout.fragment_user_info_fragment, container, false);
-        ListView listView = view.findViewById(R.id.User_listView);
-        if (!UserData.userdetail.isEmpty()) {
-            String[] s = new String[UserData.userdetail.size()];
-            for (int i = 0; i < s.length; i++) {
-                s[i] = UserData.userdetail.get(i).getName();
-            }
+            // Required empty public constructor
         }
 
-        UserProfile_Adapter userProfileAdapter = new UserProfile_Adapter(inflater.getContext(), R.layout.userprofile_layout, UserData.userdetail);
-        listView.setAdapter(userProfileAdapter);
+        private Listener listener;
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (listener != null)
-                    listener.onItemClick(i);
+        @Override
+        public void onAttach(Context context) {
+            super.onAttach(context);
+            this.listener = (Listener) context;
+        }
 
-                Intent intent = new Intent(inflater.getContext(), profile_activity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                intent.putExtra(profile_activity.TAG, i);
-                startActivity(intent);
-            }
-        });
-//       context = inflater.getContext();
+        @Override
+        public View onCreateView(final LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+
+
+            View view = inflater.inflate(R.layout.fragment_user_info_fragment, container, false);
+//            ListView listView = view.findViewById(R.id.User_listView);
+//            if (!UserData.userdetail.isEmpty()) {
+//                String[] s = new String[UserData.userdetail.size()];
+//                for (int i = 0; i < s.length; i++) {
+//                    s[i] = UserData.userdetail.get(i).getName();
+//                }
+//            }
 //
-return view;
-    }
-
-//    Button btn = .findViewById(R.id.btn);
-//    @Override
-//    public void onStart() {
-//        super.onStart();
+//            UserProfile_Adapter userProfileAdapter = new UserProfile_Adapter(inflater.getContext(), R.layout.userprofile_layout, UserData.userdetail);
+//            listView.setAdapter(userProfileAdapter);
 //
+//
+//            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                    if (listener != null)
+//                        listener.onItemClick(i);
+//
+//                    Intent intent = new Intent(inflater.getContext(), profile_activity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    intent.putExtra(profile_activity.TAG, i);
+//                    startActivity(intent);
+//                }
+//            });
+////       context = inflater.getContext();
+////
+            return view;
+        }
+
 //        View view = getView();
-//        if (view != null)
-//        {
-////           Button btn =
-//           btn.setOnClickListener(new View.OnClickListener() {
-//               @Override
-//               public void onClick(View view) {
-//                   Intent intent = new Intent(context, RegisterUserInfo.class);
-//                   startActivity(intent);
-////               }
-//           });
+//        Button btn = view.findViewById(R.id.btn);
 
+        @Override
+        public void onStart() {
+            super.onStart();
+
+            View view = getView();
+            if (view != null) {
+                ListView listView = view.findViewById(R.id.User_listView);
+                Button button = view.findViewById(R.id.btn);
+                UserProfile_Adapter userProfileAdapter = new UserProfile_Adapter(getContext(), R.layout.userprofile_layout, UserData.userdetail);
+               listView.setAdapter(userProfileAdapter);
+               listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                   @Override
+                   public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                       if (listener != null)
+                           listener.onItemClick(i);
+                   }
+               });
+
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), RegisterUserInfo.class);
+                        startActivity(intent);
+                    }
+                });
+
+            }
         }
-    //}
+    }
 

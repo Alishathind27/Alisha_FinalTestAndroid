@@ -37,7 +37,7 @@ public class ImageAdapter extends BaseAdapter {
         if (view == null)
             view = LayoutInflater.from(context).inflate(R.layout.image_file,null);
         ImageView imageView = view.findViewById(R.id.image_view);
-        imageView.setImageResource(image[i]);
+        imageView.setBackgroundResource(image[i]);
         return view;
     }
 }

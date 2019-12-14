@@ -25,6 +25,7 @@ public class UserProfile_Adapter extends ArrayAdapter {
         super(context, resource, resource);
         this.layoutInflater = LayoutInflater.from(context);
         layoutResource = resource;
+        this.user = user;
     }
 
     @Override
