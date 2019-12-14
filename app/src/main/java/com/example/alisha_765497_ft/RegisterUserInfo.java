@@ -2,6 +2,8 @@ package com.example.alisha_765497_ft;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import java.io.Serializable;
 
 public class RegisterUserInfo extends AppCompatActivity  {
+
 
     EditText name_text;
     EditText email_text;
@@ -31,16 +34,20 @@ public class RegisterUserInfo extends AppCompatActivity  {
 
          Savebutton.setOnClickListener(new View.OnClickListener() {
 
-             String n = name_text.getText().toString();
-             String Em = email_text.getText().toString();
-             String phn = phone_text.getText().toString();
+//             String n = name_text.getText().toString();
+//             String Em = email_text.getText().toString();
+//             String phn = phone_text.getText().toString();
 
              @Override
              public void onClick(View view) {
-               if (!n.isEmpty() & !Em.isEmpty() & !phn.isEmpty()) {
+               if (!name_text.getText().toString().isEmpty() & !email_text.getText().toString().isEmpty() & !phone_text.getText().toString().isEmpty()) {
 
-                  UserData data = new UserData(n,Em,phn);
-                  Toast.makeText(RegisterUserInfo.this,"Successfull", Toast.LENGTH_LONG).show();
+                   UserData d = new UserData(name_text.getText().toString(),email_text.getText().toString(),phone_text.getText().toString());
+                   UserData.userdetail.add(d);
+
+                   Intent intent = new Intent(RegisterUserInfo.this, Verification.class);
+                   startActivity(intent);
+
                }
                else
                {

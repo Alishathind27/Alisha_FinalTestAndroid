@@ -3,7 +3,7 @@ package com.example.alisha_765497_ft;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class UserData implements Serializable
+public class UserData
 {
     public String name;
     public String email;
@@ -16,7 +16,8 @@ public class UserData implements Serializable
         this.phone = phone;
     }
 
-    public static ArrayList<String> userdetail = new ArrayList<>();
+    public static ArrayList<UserData> userdetail = new ArrayList<>();
+
 
 
 }
