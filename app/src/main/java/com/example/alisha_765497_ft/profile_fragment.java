@@ -32,6 +32,7 @@ public class profile_fragment extends Fragment {
     name.setText(userData.getName());
     email.setText(userData.getEmail());
     phone.setText(userData.getPhone());
+    imageView.setImageResource(R.drawable.icon01_01);
         }
 
 

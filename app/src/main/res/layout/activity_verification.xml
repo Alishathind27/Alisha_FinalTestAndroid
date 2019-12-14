@@ -40,13 +40,18 @@
         android:text="I'm not a robot"
         android:textSize="20dp"/>
 
-        <ImageView
+        <ImageButton
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:id="@+id/refresh_btn"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/refresh_image"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/refresh_image"
+            />
+
+
     </LinearLayout>
 
     <Button

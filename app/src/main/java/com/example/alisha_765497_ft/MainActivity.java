@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View detailView = findViewById(R.id.list_view);
+        View detailView = findViewById(R.id.profile);
         misDualPane = detailView != null && detailView.getVisibility() == View.VISIBLE;
 
     }

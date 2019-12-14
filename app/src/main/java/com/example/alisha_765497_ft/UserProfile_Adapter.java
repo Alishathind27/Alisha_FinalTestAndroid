@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,13 +40,15 @@ public class UserProfile_Adapter extends ArrayAdapter {
         View view = convertView;
         if(view == null)
             view = layoutInflater.inflate(layoutResource, parent, false );
-        TextView Text_name = view.findViewById(R.id.name);
-        TextView Text_email = view.findViewById(R.id.email);
-        TextView Text_phone = view.findViewById(R.id.Phone);
+        TextView Text_name = view.findViewById(R.id.textView);
+        TextView Text_email = view.findViewById(R.id.textView3);
+        TextView Text_phone = view.findViewById(R.id.textView2);
+        ImageView imageView = view.findViewById(R.id.imageView);
 
-        Text_name.setText(user.get(position).name);
-        Text_email.setText(user.get(position).email);
-        Text_phone.setText(user.get(position).phone);
+        Text_name.setText(user.get(position).getName());
+        Text_email.setText(user.get(position).getEmail());
+        Text_phone.setText(user.get(position).getPhone());
+        imageView.setImageResource(R.drawable.icon01_01);
 
         return view;
     }

@@ -2,11 +2,19 @@ package com.example.alisha_765497_ft;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.util.Collections;
+import java.util.Random;
 
 public class Verification extends AppCompatActivity {
 
@@ -39,6 +47,39 @@ public class Verification extends AppCompatActivity {
                  imageView.setImageResource(R.drawable.checked);
              }
          });
+        ImageButton ref_btn = findViewById(R.id.refresh_btn);
+        Button bt = findViewById(R.id.verify);
+        final CheckBox check = findViewById(R.id.checkbox);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check.isChecked()) {
+
+                    Intent intent = new Intent(Verification.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(Verification.this, "failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+            });
+            ref_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    gridView.setAdapter(imageAdapter);
+                    int index, temp;
+                    Random random = new Random();
+                    for (int i = image.length - 1; i > 0; i--)
+                    {
+                        index = random.nextInt(i + 1);
+                        temp = image[index];
+                        image[index] = image[i];
+                        image[i] = temp;
+                    }
+                    gridView.deferNotifyDataSetChanged();
+                }
+            })
+;
 
     }
 }

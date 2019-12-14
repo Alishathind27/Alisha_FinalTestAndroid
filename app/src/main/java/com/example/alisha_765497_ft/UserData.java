@@ -9,8 +9,7 @@ public class UserData
     public String email;
     public String phone;
 
-    public UserData(String name, String email, String phone)
-    {
+    public UserData(String name, String email, String phone) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -29,4 +28,6 @@ public class UserData
     public String getPhone() {
         return phone;
     }
+
+
 }
