@@ -19,7 +19,7 @@ public class UserProfile_Adapter extends ArrayAdapter {
  private List<UserData> user;
  private final LayoutInflater layoutInflater;
  private final int layoutResource;
-
+int[] a= {R.drawable.icon01_01,R.drawable.icon01_02,R.drawable.icon01_03,R.drawable.icon01_04};
 
 
     public UserProfile_Adapter(@NonNull Context context, int resource,List<UserData> user) {
@@ -48,7 +48,11 @@ public class UserProfile_Adapter extends ArrayAdapter {
         Text_name.setText(user.get(position).getName());
         Text_email.setText(user.get(position).getEmail());
         Text_phone.setText(user.get(position).getPhone());
-        imageView.setImageResource(R.drawable.icon01_01);
+        if(position>4){
+            position = 1;
+            imageView.setImageResource(a[position]);
+        }
+        imageView.setImageResource(a[position]);
 
         return view;
     }

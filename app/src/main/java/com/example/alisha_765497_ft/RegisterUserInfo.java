@@ -41,13 +41,17 @@ public class RegisterUserInfo extends AppCompatActivity  {
              @Override
              public void onClick(View view) {
                if (!name_text.getText().toString().isEmpty() & !email_text.getText().toString().isEmpty() & !phone_text.getText().toString().isEmpty()) {
-
                    UserData d = new UserData(name_text.getText().toString(),email_text.getText().toString(),phone_text.getText().toString());
                    UserData.userdetail.add(d);
-
+                   System.out.println("append");
+                   Toast.makeText(RegisterUserInfo.this,"print",Toast.LENGTH_LONG).show();
                    Intent intent = new Intent(RegisterUserInfo.this, Verification.class);
                    startActivity(intent);
-
+                   UserData a = new UserData("name","dhnnejsk","75");
+                   UserData.userdetail.add(a);
+                   UserData b = new UserData("name","dhnnejsk","75");
+                   UserData.userdetail.add(b);
+                   System.out.println(UserData.userdetail.get(1).getEmail());
                }
                else
                {

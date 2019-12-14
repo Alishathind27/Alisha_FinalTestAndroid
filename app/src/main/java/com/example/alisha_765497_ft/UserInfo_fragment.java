@@ -49,31 +49,7 @@ interface Listener{
 
 
             View view = inflater.inflate(R.layout.fragment_user_info_fragment, container, false);
-//            ListView listView = view.findViewById(R.id.User_listView);
-//            if (!UserData.userdetail.isEmpty()) {
-//                String[] s = new String[UserData.userdetail.size()];
-//                for (int i = 0; i < s.length; i++) {
-//                    s[i] = UserData.userdetail.get(i).getName();
-//                }
-//            }
-//
-//            UserProfile_Adapter userProfileAdapter = new UserProfile_Adapter(inflater.getContext(), R.layout.userprofile_layout, UserData.userdetail);
-//            listView.setAdapter(userProfileAdapter);
-//
-//
-//            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                    if (listener != null)
-//                        listener.onItemClick(i);
-//
-//                    Intent intent = new Intent(inflater.getContext(), profile_activity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    intent.putExtra(profile_activity.TAG, i);
-//                    startActivity(intent);
-//                }
-//            });
-////       context = inflater.getContext();
+
 ////
             return view;
         }
@@ -87,6 +63,8 @@ interface Listener{
 
             View view = getView();
             if (view != null) {
+
+
                 ListView listView = view.findViewById(R.id.User_listView);
                 Button button = view.findViewById(R.id.btn);
                 UserProfile_Adapter userProfileAdapter = new UserProfile_Adapter(getContext(), R.layout.userprofile_layout, UserData.userdetail);
@@ -107,6 +85,7 @@ interface Listener{
                         startActivity(intent);
                     }
                 });
+                listView.deferNotifyDataSetChanged();
 
             }
         }
