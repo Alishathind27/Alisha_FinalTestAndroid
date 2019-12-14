@@ -3,6 +3,7 @@ package com.example.alisha_765497_ft;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.sip.SipSession;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,49 +11,90 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UserInfo_fragment extends Fragment {
 
-public Context context;
+interface Listener{
+    void onItemClick(int id);
+}
 
+    public class UserInfo_fragment extends Fragment {
 
-    public UserInfo_fragment() {
+//    public Context context;
+
+        public UserInfo_fragment() {
         // Required empty public constructor
     }
 
+    private Listener listener;
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        this.context = inflater.getContext();
-        return inflater.inflate(R.layout.fragment_user_info_fragment, container, false);
-
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.listener = (Listener) context;
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        View view = getView();
-        if (view != null)
-        {
-           Button btn = view.findViewById(R.id.btn);
-           btn.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View view) {
-                   Intent intent = new Intent(context, RegisterUserInfo.class);
-                   startActivity(intent);
-               }
-           });
+
+        View view = inflater.inflate(R.layout.fragment_user_info_fragment, container, false);
+        ListView listView = view.findViewById(R.id.User_listView);
+        if (!UserData.userdetail.isEmpty()) {
+            String[] s = new String[UserData.userdetail.size()];
+            for (int i = 0; i < s.length; i++) {
+                s[i] = UserData.userdetail.get(i).getName();
+            }
+        }
+
+        UserProfile_Adapter userProfileAdapter = new UserProfile_Adapter(inflater.getContext(), R.layout.userprofile_layout, UserData.userdetail);
+        listView.setAdapter(userProfileAdapter);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (listener != null)
+                    listener.onItemClick(i);
+
+                Intent intent = new Intent(inflater.getContext(), profile_activity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                intent.putExtra(profile_activity.TAG, i);
+                startActivity(intent);
+            }
+        });
+//       context = inflater.getContext();
+//
+return view;
+    }
+
+//    Button btn = .findViewById(R.id.btn);
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        View view = getView();
+//        if (view != null)
+//        {
+////           Button btn =
+//           btn.setOnClickListener(new View.OnClickListener() {
+//               @Override
+//               public void onClick(View view) {
+//                   Intent intent = new Intent(context, RegisterUserInfo.class);
+//                   startActivity(intent);
+////               }
+//           });
 
         }
-    }
-}
+    //}
+

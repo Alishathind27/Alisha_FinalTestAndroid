@@ -18,6 +18,15 @@ public class UserData
 
     public static ArrayList<UserData> userdetail = new ArrayList<>();
 
+    public String getName() {
+        return name;
+    }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public String getPhone() {
+        return phone;
+    }
 }

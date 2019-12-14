@@ -4,17 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
 public class Verification extends AppCompatActivity {
 
 
-    public void checked(View view){
-        ImageView imageView = (ImageView) view;
-        imageView.setImageResource(R.drawable.checked);
-//        imageView.setBackgroundResource(R.drawable.img1);
-    }
+//    public void checked(View view){
+//        ImageView imageView = (ImageView) view;
+//        imageView.setImageResource(R.drawable.checked);
+////        imageView.setBackgroundResource(R.drawable.img1);
+//    }
 
     GridView gridView;
 
@@ -31,7 +32,13 @@ public class Verification extends AppCompatActivity {
         final ImageAdapter imageAdapter = new ImageAdapter(this, image);
         gridView.setAdapter(imageAdapter);
 
-
+         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                 ImageView imageView = view.findViewById(R.id.image_view);
+                 imageView.setImageResource(R.drawable.checked);
+             }
+         });
 
     }
 }
